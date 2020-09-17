@@ -1,12 +1,22 @@
-pragma solidity 0.7.0;
-
-enum WeekDay {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
+/**
+ * SPDX-License-Identifier: UNLICENSED
+ */
+pragma solidity >=0.4.22 <0.8.0;
 
 /**
  * @title Vault
  * @dev Timelocked Vault
  */
-contract Vault {
+contract SmartVault {
+    enum WeekDay {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
     uint256 lockedAt;
     uint256 funds;
     address owner;
@@ -16,7 +26,7 @@ contract Vault {
         _;
     }
 
-    constructor() {
+    constructor() public {
         owner = msg.sender;
     }
 
@@ -37,7 +47,7 @@ contract Vault {
         lockedAt = block.timestamp;
         funds = funds + msg.value;
 
-        return lockedAt;
+        return funds;
     }
 
     function withdraw(uint256 amount) public ownerOnly {
@@ -62,7 +72,3 @@ contract Vault {
         return funds;
     }
 }
-
-/**
- * SPDX-License-Identifier: UNLICENSED
- */
