@@ -1,1 +1,4 @@
 bin
+.secret
+build/
+node_modules/
