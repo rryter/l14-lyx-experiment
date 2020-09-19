@@ -18,9 +18,9 @@
  *
  */
 
-const HDWalletProvider = require("@truffle/hdwallet-provider");
-const fs = require("fs");
-const mnemonic = fs.readFileSync(".secret").toString().trim();
+// const HDWalletProvider = require("@truffle/hdwallet-provider");
+// const fs = require("fs");
+// const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
   /**
@@ -48,15 +48,6 @@ module.exports = {
       gasPrice: 100000000000,
     },
 
-    lukso: {
-      provider: () => {
-        return new HDWalletProvider(
-          mnemonic,
-          "http://rpc.l14.lukso.network:8545"
-        );
-      },
-      network_id: "2",
-    },
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
